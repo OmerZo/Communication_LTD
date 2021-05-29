@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 from os import path, environ
+from .config import config
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,6 +43,7 @@ INSTALLED_APPS = [
     'products.apps.ProductsConfig',
     'users.apps.UsersConfig',
     'crispy_forms',
+    'axes',
 ]
 
 MIDDLEWARE = [
@@ -51,7 +54,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'axes.middleware.AxesMiddleware',
 ]
+
+AUTHENTICATION_BACKENDS = [
+    'axes.backends.AxesBackend',
+    'django.contrib.auth.backends.ModelBackend',
+   ]
 
 ROOT_URLCONF = 'Communication_LTD.urls'
 
@@ -94,6 +103,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+        'OPTIONS':{
+            'min_length': config['MIN_LENGTH'],}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -143,3 +154,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_PASS')
+
+
+#Axes Config
+
+AXES_FAILURE_LIMIT = config['AXES_FAILURE_LIMIT']
+AXES_COOLOFF_TIME = timedelta(minutes=config['AXES_COOLOFF_TIME'])
+AXES_LOCKOUT_TEMPLATE = 'users/login_failed.html'

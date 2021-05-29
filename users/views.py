@@ -28,3 +28,4 @@ def register(request):
 @login_required
 def profile(requests):
     return render(requests, 'users/profile.html')
+
