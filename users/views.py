@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UserRegisterForm, ProfileForm
-from .models import Profile
+from .forms import UserRegisterForm, ProfileForm, CustomerCreateForm
+from .models import Profile, Customer
 
 
 def register(request):
@@ -23,9 +23,31 @@ def register(request):
     else:
         user_form = UserRegisterForm()
         profile_form = ProfileForm()
-    return render(request, 'users/register.html', {'user_form': user_form, 'profile_form':profile_form })
+    return render(request, 'users/register.html', {'user_form': user_form, 'profile_form': profile_form})
+
 
 @login_required
 def profile(requests):
     return render(requests, 'users/profile.html')
 
+
+def customer_create_view(request):
+    form = CustomerCreateForm()
+    if request.method == 'POST':
+        form = CustomerCreateForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('customer')
+    context = {
+        'form': form
+    }
+    return render(request, "users/customer_create.html", context)
+
+
+def customer_detail_view(request):
+    obj = Customer.objects.filter().order_by('-id')[0]
+    context = {
+        'Name': obj.Name,
+        'Email': obj.Email
+    }
+    return render(request, "users/customer_detail.html", context)

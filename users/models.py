@@ -16,3 +16,9 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+
+
+class Customer(models.Model):
+    Name = models.CharField(max_length=100, null=True)
+    Email = models.EmailField(max_length=100, null=True)
+    Phone = models.CharField(max_length=11, null=True)
