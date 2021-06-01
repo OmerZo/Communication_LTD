@@ -12,9 +12,9 @@ def register(request):
         if user_form.is_valid() and profile_form.is_valid():
             user = user_form.save()
 
-            credit_card = profile_form.cleaned_data.get('credit_card')
+            phone = profile_form.cleaned_data.get('phone')
             data_plan = profile_form.cleaned_data.get('data_plan')
-            profile = Profile.objects.create(user=user, credit_card=credit_card, data_plan=data_plan)
+            profile = Profile.objects.create(user=user, Phone=Phone, data_plan=data_plan)
             profile.save()
 
             username = user_form.cleaned_data.get('username')

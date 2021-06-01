@@ -11,7 +11,7 @@ DATA_PLAN_CHOICES =(
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     image = models.ImageField(default='default.jpg', upload_to='profile_pics')
-    credit_card = models.IntegerField(default='1234')
+    phone = models.CharField(max_length=11, default='0521111111')
     data_plan = models.CharField(default='Ultimate  100$/m', max_length=60, choices = DATA_PLAN_CHOICES)
 
     def __str__(self):

@@ -15,7 +15,7 @@ class Migration(migrations.Migration):
     operations = [
         migrations.AlterField(
             model_name='profile',
-            name='credit_card',
+            name='Phone',
             field=models.IntegerField(default='1234'),
         ),
         migrations.AlterField(

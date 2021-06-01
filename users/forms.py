@@ -20,12 +20,12 @@ class UserRegisterForm(UserCreationForm):
 
 
 class ProfileForm(forms.ModelForm):
-    credit_card = forms.IntegerField()
+    phone = forms.IntegerField()
     data_plan = forms.ChoiceField(choices=DATA_PLAN_CHOICES)
 
     class Meta:
         model = Profile
-        fields = ['credit_card', 'data_plan']
+        fields = ['phone', 'data_plan']
 
 
 class CustomerCreateForm(ModelForm):
