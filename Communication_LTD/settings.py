@@ -30,7 +30,6 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -60,7 +59,7 @@ MIDDLEWARE = [
 AUTHENTICATION_BACKENDS = [
     'axes.backends.AxesBackend',
     'django.contrib.auth.backends.ModelBackend',
-   ]
+]
 
 ROOT_URLCONF = 'Communication_LTD.urls'
 
@@ -82,7 +81,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'Communication_LTD.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -93,7 +91,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
@@ -103,8 +100,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-        'OPTIONS':{
-            'min_length': config['MIN_LENGTH'],}
+        'OPTIONS': {
+            'min_length': config['MIN_LENGTH']}
     },
     {
         'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
@@ -112,8 +109,28 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-]
+    {
+        'NAME': 'Communication_LTD.Communication_LTD.validator.UppercaseValidator',
+        'OPTIONS': {
+            'min_upper_case': config['MIN_UPPER_CASE']}
+    },
+    {
+        'NAME': 'Communication_LTD.Communication_LTD.validator.LowerValidator',
+        'OPTIONS': {
+            'min_lower_case': config['MIN_LOWER_CASE']}
+    },
+    {
+        'NAME': 'Communication_LTD.Communication_LTD.validator.SymbolValidator',
+        'OPTIONS': {
+            'min_symbol': config['MIN_SYMBOL']}
+    },
+    {
+        'NAME': 'Communication_LTD.Communication_LTD.validator.NumberValidator',
+        'OPTIONS': {
+            'min_lower_case': config['MIN_DIGITS']}
+    },
 
+]
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
@@ -128,7 +145,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -142,7 +158,6 @@ MEDIA_URL = '/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'products-home'
@@ -155,8 +170,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = environ.get('EMAIL_USER')
 EMAIL_HOST_PASSWORD = environ.get('EMAIL_PASS')
 
-
-#Axes Config
+# Axes Config
 
 AXES_FAILURE_LIMIT = config['AXES_FAILURE_LIMIT']
 AXES_COOLOFF_TIME = timedelta(minutes=config['AXES_COOLOFF_TIME'])
