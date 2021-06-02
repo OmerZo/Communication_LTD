@@ -40,7 +40,7 @@ class UppercaseValidator(object):
             "Your password must contain at least 1 uppercase letter, A-Z."
         )
 
-
+'''
 class LowercaseValidator(object):
     def __init__(self, min_lower_case=0):
         self.min_lower_case = min_lower_case
@@ -79,3 +79,4 @@ class SymbolValidator(object):
             "Your password must contain at least 1 symbol: " +
             "()[]{}|\`~!@#$%^&*_-+=;:'\",<>./?"
         )
+'''

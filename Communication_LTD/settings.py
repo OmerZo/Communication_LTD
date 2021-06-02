@@ -14,6 +14,7 @@ from pathlib import Path
 from os import path, environ
 from .config import config
 from datetime import timedelta
+from . import validator
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -109,11 +110,13 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
+    '''
     {
-        'NAME': 'Communication_LTD.Communication_LTD.validator.UppercaseValidator',
+        'NAME': 'validator.UppercaseValidator',
         'OPTIONS': {
-            'min_upper_case': config['MIN_UPPER_CASE']}
+            'min_upper_case': 1}
     },
+    
     {
         'NAME': 'Communication_LTD.Communication_LTD.validator.LowerValidator',
         'OPTIONS': {
@@ -127,8 +130,9 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'Communication_LTD.Communication_LTD.validator.NumberValidator',
         'OPTIONS': {
-            'min_lower_case': config['MIN_DIGITS']}
+            'min_digits': config['MIN_DIGITS']}
     },
+    '''
 
 ]
 
