@@ -26,7 +26,7 @@ class UppercaseValidator(object):
     def __init__(self, min_upper_case=0):
         self.min_upper_case = min_upper_case
 
-    def validate(self, password):
+    def validate(self, password, user=None):
         if not len(re.findall('\d', password)) >= self.min_upper_case:
             raise ValidationError(
                 _("The password must contain at least 1 uppercase letter, A-Z."),

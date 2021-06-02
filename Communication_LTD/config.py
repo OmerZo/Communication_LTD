@@ -6,5 +6,5 @@ config = {
     'MIN_LOWER_CASE' : 1,
     'MIN_SYMBOL' : 1,
     'MIN_DIGITS' : 1,
-
+    'SPECIAL_CHARACTERS' : "~!@#$%^&*()_+{}\":;'[]",
     }

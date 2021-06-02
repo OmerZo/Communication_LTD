@@ -14,7 +14,6 @@ from pathlib import Path
 from os import path, environ
 from .config import config
 from datetime import timedelta
-from . import validator
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -44,6 +43,9 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'crispy_forms',
     'axes',
+    'django_password_validators',
+    'django_password_validators.password_history',
+
 ]
 
 MIDDLEWARE = [
@@ -110,29 +112,27 @@ AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
-    '''
     {
-        'NAME': 'validator.UppercaseValidator',
+        'NAME': 'django_password_validators.password_history.password_validation.UniquePasswordsValidator',
         'OPTIONS': {
-            'min_upper_case': 1}
-    },
-    
-    {
-        'NAME': 'Communication_LTD.Communication_LTD.validator.LowerValidator',
-        'OPTIONS': {
-            'min_lower_case': config['MIN_LOWER_CASE']}
+             # How many recently entered passwords matter.
+             # Passwords out of range are deleted.
+             # Default: 0 - All passwords entered by the user. All password hashes are stored.
+            'last_passwords': 3 # Only the last 3 passwords entered by the user
+            }
     },
     {
-        'NAME': 'Communication_LTD.Communication_LTD.validator.SymbolValidator',
+        'NAME': 'django_password_validators.password_character_requirements.password_validation.PasswordCharacterValidator',
         'OPTIONS': {
-            'min_symbol': config['MIN_SYMBOL']}
+             'min_length_digit': config['MIN_DIGITS'],
+             'min_length_alpha': config['MIN_DIGITS'],
+             'min_length_special': config['MIN_SYMBOL'],
+             'min_length_lower': config['MIN_LOWER_CASE'],
+             'min_length_upper': config['MIN_UPPER_CASE'],
+             'special_characters': config['SPECIAL_CHARACTERS'],
+    }
     },
-    {
-        'NAME': 'Communication_LTD.Communication_LTD.validator.NumberValidator',
-        'OPTIONS': {
-            'min_digits': config['MIN_DIGITS']}
-    },
-    '''
+
 
 ]
 

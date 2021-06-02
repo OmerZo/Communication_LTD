@@ -14,7 +14,7 @@ def register(request):
 
             phone = profile_form.cleaned_data.get('phone')
             data_plan = profile_form.cleaned_data.get('data_plan')
-            profile = Profile.objects.create(user=user, Phone=Phone, data_plan=data_plan)
+            profile = Profile.objects.create(user=user, phone=phone, data_plan=data_plan)
             profile.save()
 
             username = user_form.cleaned_data.get('username')
