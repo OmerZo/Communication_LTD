@@ -340,4 +340,4 @@ ASALocalRun/
 healthchecksdb
 
 
-./Communication_LTD/users/migrations/
+./db.sqlite3
