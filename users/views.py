@@ -78,6 +78,8 @@ def customer_create_view(request):
 def customer_detail_view(request):
     user = request.user
     if user.is_authenticated:
+
+        #Preparing for SQLi attack.
         phone = '1 or 1=1'
         phone2 = "2"
         obj = Customer.objects.raw('select id from users_customer where phone like ' + phone)[0]
