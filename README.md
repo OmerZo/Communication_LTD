@@ -1,5 +1,12 @@
 # Communication_LTD
-Create a secured web app using Python Django framework
+
+1. Please run the project from a virtual environment.
+2. Please install the requirements in the txt file attached by running in the shell the command: pip install -r requirements.txt
+3. In 'settings.py' change the EMAIL_HOST_USER and EMAIL_HOST_PASSWORD to your credentials and allow your Gmail to use less secure apps.
+4. Please save the project and run in the shell the next commands:
+    - py manage.py makemigrations
+    - py manage.py migrate
+    - py manage.py runserver
 
 requirements:
 asgiref==3.3.4
@@ -13,3 +20,4 @@ pytz==2021.1
 sqlparse==0.4.1
 typing-extensions==3.7.4.3
 
+Link to website: https://cammunicatoin-hit.herokuapp.com/
