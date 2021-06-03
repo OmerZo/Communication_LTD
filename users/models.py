@@ -19,6 +19,10 @@ class Profile(models.Model):
 
 
 class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     Name = models.CharField(max_length=100, null=True)
     Email = models.EmailField(max_length=100, null=True)
     Phone = models.CharField(max_length=11, null=True)
+
+    def __str__(self):
+        return f'{self.Name} Customer'

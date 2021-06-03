@@ -31,4 +31,4 @@ class ProfileForm(forms.ModelForm):
 class CustomerCreateForm(ModelForm):
     class Meta:
         model = Customer
-        fields = '__all__'
+        fields = ['Name', 'Email', 'Phone']
