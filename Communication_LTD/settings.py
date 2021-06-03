@@ -118,7 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
              # How many recently entered passwords matter.
              # Passwords out of range are deleted.
              # Default: 0 - All passwords entered by the user. All password hashes are stored.
-            'last_passwords': 3 # Only the last 3 passwords entered by the user
+            'last_passwords': config['LAST_PASSWORDS']
             }
     },
     {

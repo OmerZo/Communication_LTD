@@ -7,4 +7,5 @@ config = {
     'MIN_SYMBOL' : 1,
     'MIN_DIGITS' : 1,
     'SPECIAL_CHARACTERS' : "~!@#$%^&*()_+{}\":;'[]",
+    'LAST_PASSWORDS' : 3,
     }
